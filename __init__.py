@@ -8,6 +8,10 @@ class TestSkill(MycroftSkill):
     def handle_skill_test(self, message):
         self.speak_dialog('skill.test')
 
+    @intent_file_handler('set.test.intent')
+    def handle_skill_test(self, message):
+        self.speak_dialog('set.test')
+
 def create_skill():
     return TestSkill()
 
