@@ -1,4 +1,5 @@
-from mycroft import MycroftSkill, intent_file_handler
+from adapt.intent import IntentBuilder
+from mycroft import MycroftSkill, intent_handler
 
 class TestSkill(MycroftSkill):
     def __init__(self):
