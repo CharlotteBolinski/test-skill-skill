@@ -19,8 +19,6 @@ class TestSkill(MycroftSkill):
      @intent_handler(
         IntentBuilder("YesTestIntent").require("okay").require("HappyContext").build()
     )
-    @removes_context("HappyContext")
-    @adds_context("SadContext")
 
 def create_skill():
     return TestSkill()
