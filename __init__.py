@@ -9,6 +9,10 @@ class TestSkill(MycroftSkill):
     def handle_skill_test(self, message):
         self.speak_dialog('skill.test')
 
+    @intent_handler(IntentBuilder('ThankYouIntent').require('ThankYouKeyword'))
+    def handle_thank_you_intent(self, message):
+        self.speak_dialog("welcome")
+
 def create_skill():
     return TestSkill()
 
