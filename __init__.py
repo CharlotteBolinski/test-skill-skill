@@ -1,5 +1,6 @@
 from adapt.intent import IntentBuilder
 from mycroft import MycroftSkill, intent_handler
+from mycroft.skills.context import adds_context, removes_context
 
 class TestSkill(MycroftSkill):
     def __init__(self):
@@ -10,9 +11,10 @@ class TestSkill(MycroftSkill):
         self.speak_dialog('skill.test')
 
     @intent_handler(IntentBuilder('HelloTest').require('HappyTest'))
+    @adds_context('HappyContext')
     def handle_hello_world_intent(self, message):
         self.log.info("This is an info level log message.")
-        self.speak_dialog("first.test")
+        self.speak("Our first test should be simple", expect_response=True)
 
 def create_skill():
     return TestSkill()
