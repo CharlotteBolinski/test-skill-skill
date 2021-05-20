@@ -13,10 +13,6 @@ class TestSkill(MycroftSkill):
     def handle_skill_test(self, message):
         self.speak_dialog('set.test')
 
-    @intent_handler('request.icecream.intent')
-    def handle_request_icecream(self):
-        self.speak_dialog('welcome.test')
-
 def create_skill():
     return TestSkill()
 
