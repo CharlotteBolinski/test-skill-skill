@@ -16,10 +16,6 @@ class TestSkill(MycroftSkill):
         self.log.info("This is an info level log message.")
         self.speak("Our first test should be simple", expect_response=True)
 
-     @intent_handler(
-        IntentBuilder("YesTestIntent").require("okay").require("HappyContext").build()
-    )
-
 def create_skill():
     return TestSkill()
 
