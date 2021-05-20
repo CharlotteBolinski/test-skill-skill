@@ -19,7 +19,7 @@ class TestSkill(MycroftSkill):
     @intent_handler(IntentBuilder().require('TeamPerson').require('WhereFrom'))
     def handle_from(self, message):
         python = message.data.get('TeamPerson')
-        self.speak('{} is from {}'.format(python, from_dict[python]))
+        self.speak('{} is from Leipzig'.format(python))
 
 def create_skill():
     return TestSkill()
