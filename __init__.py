@@ -16,6 +16,12 @@ class TestSkill(MycroftSkill):
         self.log.info("This is an info level log message.")
         self.speak("Our first test should be simple", expect_response=True)
 
+    @intent_handler(IntentBuilder('ok').require('okay'))
+    def handle_hello_world_intent(self, message):
+        self.log.info("This is an info level log message2.")
+        self.speak("Let us start: what is pi?", expect_response=True)
+
+
 def create_skill():
     return TestSkill()
 
