@@ -16,8 +16,7 @@ class TestSkill(MycroftSkill):
     @intent_handler('request.icecream.intent')
     def handle_request_icecream(self):
         self.speak_dialog('welcome')
-        selection = self.ask_selection(self.flavors, 'what.flavor')
-        self.speak_dialog('coming.right.up', {'flavor': selection})
+
 
 def create_skill():
     return TestSkill()
