@@ -16,6 +16,11 @@ class TestSkill(MycroftSkill):
         self.log.info("This is an info level log message.")
         self.speak("Our first test should be simple", expect_response=True)
 
+    @intent_handler(IntentBuilder().require('TeamPerson').require('WhereFrom'))
+    def handle_from(self, message):
+        python = message.data.get('TeamPerson')
+        self.speak('{} is from {}'.format(python, from_dict[python]))
+
 def create_skill():
     return TestSkill()
 
