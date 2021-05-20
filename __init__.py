@@ -11,6 +11,7 @@ class TestSkill(MycroftSkill):
 
     @intent_handler(IntentBuilder('HelloTest').require('HappyTest'))
     def handle_hello_world_intent(self, message):
+        self.log.info("This is an info level log message.")
         self.speak_dialog("first.test")
 
 def create_skill():
