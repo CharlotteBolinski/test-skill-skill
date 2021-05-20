@@ -24,7 +24,7 @@ class TestSkill(MycroftSkill):
         self.starttest = True
         self.speak("What are the 20 first digits of pi?", expect_response=True)
 
-    @intent_handler(IntentBuilder("GoOnTest").require("OneAnswer").require("TestContext").build())
+    @intent_handler(IntentBuilder('GoOnTest').require('OneAnswer').require('TestContext').build())
     @removes_context('TestContext')
     def handle_one_test_intent(self, message):
         if self.starttest:
