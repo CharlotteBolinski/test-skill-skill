@@ -19,19 +19,19 @@ class TestSkill(MycroftSkill):
 
     @intent_handler(IntentBuilder('OkayStartTest').require('OkayTest').require('StartContext').build())
     @removes_context('StartContext')
-    @adds_context('NewTestContext')
+    @adds_context('NewContext')
     def handle_okay_test_intent(self, message):
         #self.speak_dialog('welcome')
         self.speak("What do you know about social Media?", expect_response=True)
 
-    @intent_handler(IntentBuilder('OkayStartTest2').require('OkayTest').require('NewTestContext').build())
-    @removes_context('NewTestContext')
-    @adds_context('StartContext')
+    @intent_handler(IntentBuilder('OkayStartTest2').require('OkayTest').require('NewContext').build())
+    @removes_context('NewContext')
+    @adds_context('SecondContext')
     def handle_okay_test_intent2(self, message):
         self.speak("What do you know about social Media?", expect_response=True)
 
     @intent_handler(IntentBuilder('ContinueTest').require('KnowNothing').require('NewTestContext').build())
-    @removes_context('NewTestContext')
+    @removes_context('SecondContext')
     @adds_context('ContinueContext')
     def handle_one_test_intent(self, message):
         self.starttest = True
