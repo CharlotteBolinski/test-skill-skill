@@ -17,16 +17,16 @@ class TestSkill(MycroftSkill):
         self.log.info("Start test was successful.")
         self.speak_dialog('welcome')
         self.speak_dialog('information')
+        self.starttest = True
         self.speak("Our first test should be simple. What do you know about social Media?", expect_response=True)
 
     @intent_handler(IntentBuilder('ContinueTest').require('KnowNothing').build())
     @removes_context('StartContext')
     @adds_context('FirstContext')
     def handle_one_test_intent(self, message):
-        self.starttest = True
-        self.log.info("self.starttest is true")
         self.speak("Okay that is interesting.")
         if self.starttest:
+            self.log.info("self.starttest is true")
             self.speak("Sounds great. Let us continue.", expect_response=True)
         else:
             self.speak("But the wrong answer, you are not hired.", expect_response=True)
@@ -36,13 +36,13 @@ class TestSkill(MycroftSkill):
     @adds_context('ThirdContext')
     def handle_okay_test_intent(self, message):
         self.speak_dialog('gapText')
-        self.speak("What do you know about social Media?", expect_response=True)
+        self.speak("What is the right answer", expect_response=True)
 
-    @intent_handler(IntentBuilder('AnswerGap').require('Elephant').build())
+    @intent_handler(IntentBuilder('AnswerGap').require('Facebook').build())
     @removes_context('ThirdContext')
     @adds_context('FinalContext')
     def handle_okay_test_intent2(self, message):
-        self.speak("What do you know about social Media?")
+        self.speak("Great, that was right.")
 
 
 def create_skill():
