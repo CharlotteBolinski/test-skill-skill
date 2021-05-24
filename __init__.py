@@ -27,9 +27,9 @@ class TestSkill(MycroftSkill):
         self.log.info("self.starttest is true")
         self.speak("Okay that is interesting.")
         if self.starttest:
-            self.speak("Sounds great. Let us continue.")
+            self.speak("Sounds great. Let us continue.", expect_response=True)
         else:
-            self.speak("But the wrong answer, you are not hired.")
+            self.speak("But the wrong answer, you are not hired.", expect_response=True)
 
     @intent_handler(IntentBuilder('OkayStartTest').require('OkayTest').require('StartContext').build())
     @removes_context('SecondContext')
