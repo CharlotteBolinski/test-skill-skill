@@ -14,7 +14,7 @@ class TestSkill(MycroftSkill):
     @adds_context('StartContext')
     def handle_hello_test_intent(self, message):
         self.starttest = False
-        self.log.info("This is an info level log message.")
+        self.log.info("Start test was successful.")
         self.speak("Our first test should be simple", expect_response=True)
 
     @intent_handler(IntentBuilder('OkayStartTest').require('OkayTest').require('StartContext').build())
@@ -22,10 +22,13 @@ class TestSkill(MycroftSkill):
     @adds_context('NewTestContext')
     def handle_okay_test_intent(self, message):
         self.starttest = True
-        self.speak_dialog('welcome')
-        self.speak("What do you know about social Media?", expect_response=True)
+        if self.starttest:
+            self.log.info("self.starttest is true")
+        else:
+            self.speak_dialog('welcome')
+            self.speak("What do you know about social Media?", expect_response=True)
 
-    @intent_handler(IntentBuilder('GoOnTest').require('KnowNothing').require('NewTestContext').build())
+    @intent_handler(IntentBuilder('ContinueTest').require('KnowNothing').require('NewTestContext').build())
     @removes_context('NewTestContext')
     @adds_context('ContinueContext')
     def handle_one_test_intent(self, message):
