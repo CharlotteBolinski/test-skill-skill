@@ -23,9 +23,9 @@ class TestSkill(MycroftSkill):
     def handle_okay_test_intent(self, message):
         self.starttest = True
         self.speak_dialog('welcome')
-        self.speak("What are the 20 first digits of pi?", expect_response=True)
+        self.speak("What do you know about social Media?", expect_response=True)
 
-    @intent_handler(IntentBuilder('GoOnTest').require('nothing').require('TestContext').build())
+    @intent_handler(IntentBuilder('GoOnTest').require('Nothing').require('TestContext').build())
     @removes_context('TestContext')
     def handle_one_test_intent(self, message):
         if self.starttest:
