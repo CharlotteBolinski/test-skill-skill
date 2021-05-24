@@ -19,7 +19,7 @@ class TestSkill(MycroftSkill):
 
     @intent_handler(IntentBuilder('OkayStartTest').require('OkayTest').require('StartContext').build())
     @removes_context('StartContext')
-    @adds_context('TestContext')
+    @adds_context('NewTestContext')
     def handle_okay_test_intent(self, message):
         self.starttest = True
         self.speak_dialog('welcome')
@@ -29,10 +29,11 @@ class TestSkill(MycroftSkill):
     @removes_context('NewTestContext')
     @adds_context('ContinueContext')
     def handle_one_test_intent(self, message):
+        self.speak("Okay that is interesting.")
         if self.starttest:
-            self.speak("That sounds great. Let us continue.")
+            self.speak("Sounds great. Let us continue.")
         else:
-            self.speak("That is the wrong answer, you are not hired.")
+            self.speak("But the wrong answer, you are not hired.")
 
 def create_skill():
     return TestSkill()
