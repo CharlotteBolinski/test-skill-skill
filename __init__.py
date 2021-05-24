@@ -25,13 +25,14 @@ class TestSkill(MycroftSkill):
         self.speak_dialog('welcome')
         self.speak("What do you know about social Media?", expect_response=True)
 
-    @intent_handler(IntentBuilder('GoOnTest').require('Nothing').require('TestContext').build())
-    @removes_context('TestContext')
+    @intent_handler(IntentBuilder('GoOnTest').require('KnowNothing').require('NewTestContext').build())
+    @removes_context('NewTestContext')
+    @adds_context('ContinueContext')
     def handle_one_test_intent(self, message):
         if self.starttest:
-            self.speak("That is the wrong answer")
+            self.speak("That sounds great. Let us continue.")
         else:
-            self.speak("That might be right")
+            self.speak("That is the wrong answer, you are not hired.")
 
 def create_skill():
     return TestSkill()
