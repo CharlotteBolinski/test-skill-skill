@@ -31,7 +31,7 @@ class TestSkill(MycroftSkill):
         else:
             self.speak("But the wrong answer, you are not hired.", expect_response=True)
 
-    @intent_handler(IntentBuilder('OkayStartTest').require('OkayTest').require('StartContext').build())
+    @intent_handler(IntentBuilder('OkayStartTest').require('OkayTest').build())
     @removes_context('SecondContext')
     @adds_context('ThirdContext')
     def handle_okay_test_intent(self, message):
