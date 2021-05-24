@@ -18,7 +18,7 @@ class TestSkill(MycroftSkill):
         self.speak_dialog('welcome')
         self.speak_dialog('information')
         self.starttest = True
-        self.speak("Our first test should be simple. What do you know about social Media?", expect_response=True)
+        self.speak("What do you know about social Media?", expect_response=True)
 
     @intent_handler(IntentBuilder('ContinueTest').require('KnowNothing').build())
     @removes_context('StartContext')
