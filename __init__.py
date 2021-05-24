@@ -30,7 +30,7 @@ class TestSkill(MycroftSkill):
     def handle_okay_test_intent2(self, message):
         self.speak("What do you know about social Media?", expect_response=True)
 
-    @intent_handler(IntentBuilder('ContinueTest').require('KnowNothing').require('SecondContext').build())
+    @intent_handler(IntentBuilder('ContinueTest').require('KnowNothing').build())
     @removes_context('SecondContext')
     def handle_one_test_intent(self, message):
         self.starttest = True
