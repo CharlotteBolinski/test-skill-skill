@@ -22,11 +22,9 @@ class TestSkill(MycroftSkill):
     @adds_context('NewTestContext')
     def handle_okay_test_intent(self, message):
         self.starttest = True
-        if self.starttest:
-            self.log.info("self.starttest is true")
-        else:
-            self.speak_dialog('welcome')
-            self.speak("What do you know about social Media?", expect_response=True)
+        self.log.info("self.starttest is true")
+        #self.speak_dialog('welcome')
+        self.speak("What do you know about social Media?", expect_response=True)
 
     @intent_handler(IntentBuilder('ContinueTest').require('KnowNothing').require('NewTestContext').build())
     @removes_context('NewTestContext')
